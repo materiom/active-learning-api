@@ -58,7 +58,12 @@ async def get_api_information():
 
 @app.get("/run_one_1d_bayesian_optimization", response_model=ResponseOneDimension)
 async def one_1d_bayesian_optimization(inputs: InputOneDimension):
+    """
+    get one 1d bayesian optimization results
 
+    :param inputs: observed data
+    :return: distribution and next suggestion
+    """
     data = [d.dict() for d in inputs.data]
 
     mu, sigma, grid, suggestion_x = run_one_1d_bayesian_optimization(data=data)

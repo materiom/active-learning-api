@@ -5,12 +5,19 @@ from typing import List, Optional
 
 N_grid_points = 1000
 
+# This jupyter notebook helped me
 # https://github.com/fmfn/BayesianOptimization/blob/master/examples/visualization.ipynb
 
 
 def run_one_1d_bayesian_optimization(data: List[dict], limits: Optional[dict] = None):
+    """
+    Run one dimension bayesian optimization
 
-    # obersverd data
+    :param data: observed data
+    :param limits: optional limits for the search space
+    :return: 'mu, sigma, grid, suggestion_x'
+    """
+    # obersered data
     x_obs = np.array([[d["x"]] for d in data])
     y_obs = np.array([d["y"] for d in data])
 

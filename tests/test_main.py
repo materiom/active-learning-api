@@ -20,9 +20,6 @@ def test_read_latest_one_gsp():
 
     input = InputOneDimension(data=[OneData(**d) for d in data])
 
-    response = client.get("/run_one_1d_bayesian_optimization",json=input.dict())
+    response = client.get("/run_one_1d_bayesian_optimization", json=input.dict())
     print(response.text)
     assert response.status_code == 200
-
-
-

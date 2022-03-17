@@ -1,5 +1,6 @@
 from bayesian import run_one_1d_bayesian_optimization
 
+
 def test_run_one_1d_bayesian_optimization():
     data = [{"x": 1, "y": 0}, {"x": 2, "y": 1}, {"x": 3, "y": -1}]
 

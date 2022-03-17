@@ -1,4 +1,4 @@
-# Materiom API
+# Active Learning API
 
 
 We use [FastAPI](https://fastapi.tiangolo.com/).
@@ -6,6 +6,9 @@ We use [FastAPI](https://fastapi.tiangolo.com/).
 # Documentation
 
 Documentation can be viewed at `/docs`. This is automatically generated from the code.
+
+There is current one endpoint `run_one_1d_bayesian_optimization` that runs a bayesian optimization in one dimension 
+and returns distribution and the next suggestion.
 
 # Setup and Run
 
