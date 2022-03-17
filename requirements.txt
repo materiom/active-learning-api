@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+numpy
+requests
+bayesian-optimization
+scipy==1.7
+pydantic
