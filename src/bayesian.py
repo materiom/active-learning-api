@@ -17,11 +17,11 @@ def run_one_1d_bayesian_optimization(data: List[dict], limits: Optional[dict] = 
     :param limits: optional limits for the search space
     :return: 'mu, sigma, grid, suggestion_x'
     """
-    # obersered data
+    # observed data
     x_obs = np.array([[d["x"]] for d in data])
     y_obs = np.array([d["y"] for d in data])
 
-    # create fake functionblack_box_function
+    # create fake function black_box_function
     black_box_function = lambda x: x
 
     if limits is None:
@@ -34,11 +34,8 @@ def run_one_1d_bayesian_optimization(data: List[dict], limits: Optional[dict] = 
         random_state=1,
     )
 
-    x_obs = np.array([[d["x"]] for d in data])
-    y_obs = np.array([d["y"] for d in data])
-
     # set grid we want to return values
-    grid = np.linspace(limits["x"][0], limits["x"][0], N_grid_points).reshape(-1, 1)
+    grid = np.linspace(limits["x"][0], limits["x"][-1], N_grid_points).reshape(-1, 1)
 
     # fit the observed points
     optimizer._gp.fit(x_obs, y_obs)
@@ -48,6 +45,6 @@ def run_one_1d_bayesian_optimization(data: List[dict], limits: Optional[dict] = 
 
     # make suggestion
     suggestion_idx = np.argmax(mu + sigma)
-    suggestion_x = grid[suggestion_idx]
+    suggestion_x = grid[suggestion_idx,0]
 
-    return mu, sigma, grid, suggestion_x
+    return mu, sigma, grid[:,0], suggestion_x
