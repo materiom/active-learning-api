@@ -1,7 +1,7 @@
-fastapi
-uvicorn[standard]
-numpy
-requests
-bayesian-optimization
+fastapi=0.75.0
+uvicorn[standard]==0.17.6
+numpy==1.22.3
+requests==2.27.1
+bayesian-optimization=1.2.0
 scipy==1.7
-pydantic
+pydantic==1.9.0
