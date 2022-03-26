@@ -14,14 +14,26 @@ def run_one_1d_bayesian_optimization(data: List[dict], limits: Optional[dict] = 
     Run one dimension bayesian optimization
 
     :param data: observed data
-    :param limits: optional limits for the search space
+    :param limits: optional limits for the search space.
+        This should be a dictionary with a key of
+        'x' and then a minimum and maximum value for x. For example {'x': [1,2]}.
+        We might want to do this as we know the solution lies in a certain space
     :return: 'mu, sigma, grid, suggestion_x'
+        - mu the expected return given an x.
+            This is an array which each point linked to 'grid'
+        - sigma the standard deviation on the estimate of 'mu'.
+            This is an array which each point linked to 'grid'
+        - grid is an array for which 'mu' and 'sigma' lie on.
+        - suggestion_x is the next suggestion for x.
+            This is the highest value of mu+sigma.
     """
     # observed data
     x_obs = np.array([[d["x"]] for d in data])
     y_obs = np.array([d["y"] for d in data])
 
     # create fake function black_box_function
+    # this function is not needed, but the package requires this.
+    # This is because the package is designed to find maximums of solve analytical equations
     black_box_function = lambda x: x
 
     if limits is None:
@@ -31,7 +43,7 @@ def run_one_1d_bayesian_optimization(data: List[dict], limits: Optional[dict] = 
     optimizer = BayesianOptimization(
         f=black_box_function,
         pbounds=limits,
-        random_state=1,
+        random_state=1,  # hard-coded for the moment
     )
 
     # set grid we want to return values
