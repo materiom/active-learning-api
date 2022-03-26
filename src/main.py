@@ -11,6 +11,8 @@ logger = logging.getLogger(__name__)
 
 version = "0.0.1"
 description = """
+Simple API that hosts code for running bayesian optimization.
+Currently only 1D bayesian optimization has been implemented but the plan is to expand to 2D.
 """
 app = FastAPI(
     title="Materiom Active Learning API",
@@ -18,6 +20,7 @@ app = FastAPI(
     description=description,
     contact={
         "name": "Materiom",
+        "github": "https://github.com/materiom/ActiveLearningAPI"
     },
 )
 

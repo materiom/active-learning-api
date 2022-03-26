@@ -47,6 +47,8 @@ def run_one_1d_bayesian_optimization(data: List[dict], limits: Optional[dict] = 
     )
 
     # set grid we want to return values
+    # This is a 1D grid of 'N_grid_points' from least to greatest x-limit,
+    # including the lower but not higher bound."
     grid = np.linspace(limits["x"][0], limits["x"][-1], N_grid_points).reshape(-1, 1)
 
     # fit the observed points
