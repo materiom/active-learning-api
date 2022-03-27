@@ -10,4 +10,5 @@ def test_run_one_1d_bayesian_optimization():
     assert len(sigma) == 1000
 
     assert s >= 2
-    assert s <= 4
+    assert s <= 2.05
+

@@ -49,7 +49,7 @@ class Point2D(BaseModel):
 
 class OneErrorBar(BaseModel):
     mu: float = Field(..., description="Mean, the expect value")
-    sigma: float = Field(..., description="standarad deviation, the std on the expected value. "
+    sigma: float = Field(..., description="standard deviation, the std on the expected value. "
                                           "I.e how confident of the value of 'mu' are we.")
     x: float = Field(..., description="x value")
 
