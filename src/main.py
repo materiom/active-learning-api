@@ -26,6 +26,12 @@ app = FastAPI(
     },
 )
 
+
+# CORS - https://fastapi.tiangolo.com/tutorial/cors/
+# CORS or "Cross-Origin Resource Sharing" refers to the situations
+# when a frontend running in a browser has JavaScript code that
+# communicates with a backend, and the backend is in a different
+# "origin" than the frontend.
 origins = os.getenv("ORIGINS", "*").split(",")
 app.add_middleware(
     CORSMiddleware,
@@ -36,24 +42,27 @@ app.add_middleware(
 )
 
 
-class OneData(BaseModel):
+class Point2D(BaseModel):
     x: float = Field(..., description="x value")
     y: float = Field(..., description="x value")
 
 
 class OneErrorBar(BaseModel):
-    mu: float = Field(..., description="Mean")
-    sigma: float = Field(..., description="standarad deviation")
+    mu: float = Field(..., description="Mean, the expect value")
+    sigma: float = Field(..., description="standarad deviation, the std on the expected value. "
+                                          "I.e how confident of the value of 'mu' are we.")
     x: float = Field(..., description="x value")
 
 
 class ResponseOneDimension(BaseModel):
     error_bars: List[OneErrorBar] = Field(..., description="List of error bars ready for plotting")
-    suggestion_x: float = Field(..., description="The best suggestion for x")
+    suggestion_x: float = Field(..., description="The best suggestion for x. "
+                                                 "'best' is defined as the best guess for 'x' that maximises the "
+                                                 "variable 'y'")
 
 
 class InputOneDimension(BaseModel):
-    data: List[OneData] = Field(..., description="List of data")
+    data: List[Point2D] = Field(..., description="List of data")
 
 
 @app.get("/")

@@ -6,7 +6,8 @@ Currently only 1D bayesian optimization has been implemented but the plan is to 
 # Documentation
 
 We use [FastAPI](https://fastapi.tiangolo.com/).
-Documentation can be viewed at `/docs`. This is automatically generated from the code.
+The documentation is automatically generated from the code.
+The documentation can be viewed at `/docs` once the service is up and running, for example http://localhost/docs
 
 There is current one endpoint `run_one_1d_bayesian_optimization` that runs a bayesian optimization in one dimension 
 and returns distribution and the next suggestion.

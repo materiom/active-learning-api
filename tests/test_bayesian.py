@@ -8,3 +8,6 @@ def test_run_one_1d_bayesian_optimization():
 
     assert len(mu) == 1000
     assert len(sigma) == 1000
+
+    assert s >= 2
+    assert s <= 4

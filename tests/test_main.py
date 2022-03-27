@@ -1,7 +1,7 @@
 """ Test for main app """
 from fastapi.testclient import TestClient
 
-from main import app, version, OneData, InputOneDimension
+from main import app, version, Point2D, InputOneDimension
 
 client = TestClient(app)
 
@@ -18,7 +18,7 @@ def test_read_latest_one_gsp():
 
     data = [{"x": 1, "y": 0}, {"x": 2, "y": 1}, {"x": 3, "y": -1}]
 
-    input = InputOneDimension(data=[OneData(**d) for d in data])
+    input = InputOneDimension(data=[Point2D(**d) for d in data])
 
     response = client.get("/run_one_1d_bayesian_optimization", json=input.dict())
     print(response.text)
