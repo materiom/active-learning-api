@@ -79,7 +79,7 @@ async def get_api_information():
     }
 
 
-@app.get("/run_one_1d_bayesian_optimization", response_model=ResponseOneDimension)
+@app.post("/run_one_1d_bayesian_optimization", response_model=ResponseOneDimension)
 async def one_1d_bayesian_optimization(inputs: InputOneDimension):
     """
     get one 1d bayesian optimization results
