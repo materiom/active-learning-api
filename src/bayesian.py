@@ -1,4 +1,3 @@
-from bayes_opt import BayesianOptimization
 import numpy as np
 from typing import List, Optional
 from sklearn.gaussian_process.kernels import Matern
