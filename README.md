@@ -49,3 +49,7 @@ To run local pytests you need to
 2. Use `docker-compose up`
    in the main directory to start up the application.
 3. You will now be able to access it on `http://localhost:80`
+
+You can use `docker` to start up the image with
+1. docker build -t active_learning:latest .
+2. docker run -p 80:80 -it active_learning:latest
